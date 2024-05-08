@@ -4,12 +4,6 @@ include("_includes/config.inc");
 include("_includes/dbconnect.inc");
 include("_includes/functions.inc");
 
-// Function to generate random UK state
-function getRandomUKState() {
-    $uk_states = array("England", "Scotland", "Wales", "Northern Ireland");
-    return $uk_states[array_rand($uk_states)];
-}
-
 // Initialize $selected_students array
 $selected_students = [];
 
@@ -80,16 +74,16 @@ if ($result->num_rows > 0) {
         echo "<td>" . $row["house"] . "</td>";
         echo "<td>" . $row["town"] . "</td>";
         echo "<td>UK</td>"; // Fixed "Country" column to "UK"
-        echo "<td>" . getRandomUKState() . "</td>"; // Generate random UK state for "State" column
+        echo "<td>England</td>"; // Fixed state to "England"
         echo "<td>" . $row["postcode"] . "</td>";
         echo "</tr>";
     }
     
     // Display delete button
-    echo "<tr><td colspan='11'><button type='submit' name='delete' class='btn btn-danger'>Delete</button></td></tr>";
+    echo "<tr><td colspan='10'><button type='submit' name='delete' class='btn btn-danger'>Delete</button></td></tr>";
     
 } else {
-    echo "<tr><td colspan='11'>No student records found.</td></tr>";
+    echo "<tr><td colspan='10'>No student records found.</td></tr>";
 }
 
 // Close table and form
